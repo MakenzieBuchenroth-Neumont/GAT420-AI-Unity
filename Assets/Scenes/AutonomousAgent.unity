@@ -184,7 +184,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 87012755d605cd5488a1c3ce22dc9ea9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -355,6 +355,10 @@ MonoBehaviour:
   agents:
   - {fileID: 4219460802149736080, guid: 5aa2548d14571f548b9fe57abdd0361a, type: 3}
   - {fileID: 4219460802149736080, guid: f9adc5c0c4e46074299e6e73aa077f4d, type: 3}
+  - {fileID: 4219460802149736080, guid: ce2b0763dc9e3c9449e612e1e370a413, type: 3}
+  - {fileID: 4219460802149736080, guid: ba291dfe0a1f0af46bedaba0392f31d0, type: 3}
+  - {fileID: 4219460802149736080, guid: bb702cdcf9bf7294a9fa4eb397f7c2d2, type: 3}
+  - {fileID: 4219460802149736080, guid: 2e2f34c1408e95a4b94d6eff1d514353, type: 3}
   layerMask:
     serializedVersion: 2
     m_Bits: 8
