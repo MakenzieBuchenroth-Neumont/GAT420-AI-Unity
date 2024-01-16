@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AI_AutonomousAgent : AI_Agent {
-    public AI_Perception seekPerception = null;
-    public AI_Perception fleePerception = null;
-    public AI_Perception flockPerception = null;
+    [SerializeField] AI_Perception seekPerception = null;
+    [SerializeField] AI_Perception fleePerception = null;
+    [SerializeField] AI_Perception flockPerception = null;
+    [SerializeField] AI_Perception obstaclePerception = null;
 
     private void Update() {
         if (seekPerception != null) { 
@@ -28,6 +29,19 @@ public class AI_AutonomousAgent : AI_Agent {
                 movement.applyForce(alignment(gameObjects));
             }
         }
+        // obstacle avoidance
+        if (obstaclePerception != null) {
+            if (((AI_RaycastPerception)obstaclePerception).CheckDirection(Vector3.forward)) {
+                Vector3 open = Vector3.zero;
+                if (((AI_RaycastPerception)obstaclePerception).GetOpenDirection(ref open)) {
+                    movement.applyForce(getSteeringForce(open) * 5);
+                }
+			}
+        }
+
+        Vector3 acceleration = movement.Acceleration;
+        acceleration.y = 0;
+        movement.Acceleration = acceleration;
 
         transform.position = Utilities.wrap(transform.position, new Vector3(-10, -10, -10), new Vector3(10, 10, 10));
     }
