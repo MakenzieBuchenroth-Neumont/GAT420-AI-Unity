@@ -31,9 +31,9 @@ public class AI_AutonomousAgent : AI_Agent {
         }
         // obstacle avoidance
         if (obstaclePerception != null) {
-            if (((AI_RaycastPerception)obstaclePerception).CheckDirection(Vector3.forward)) {
+            if (((AI_SpherecastPerception)obstaclePerception).CheckDirection(Vector3.forward)) {
                 Vector3 open = Vector3.zero;
-                if (((AI_RaycastPerception)obstaclePerception).GetOpenDirection(ref open)) {
+                if (((AI_SpherecastPerception)obstaclePerception).GetOpenDirection(ref open)) {
                     movement.applyForce(getSteeringForce(open) * 5);
                 }
 			}

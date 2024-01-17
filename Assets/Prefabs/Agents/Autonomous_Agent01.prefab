@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5760662169638324987}
   - component: {fileID: 1899232850295592627}
   - component: {fileID: -5345453455142655828}
-  - component: {fileID: 247219109010444114}
+  - component: {fileID: 2944930329199776013}
   - component: {fileID: 793647957575107459}
   m_Layer: 0
   m_Name: Autonomous_Agent01
@@ -54,7 +54,7 @@ MonoBehaviour:
   seekPerception: {fileID: 1899232850295592627}
   fleePerception: {fileID: 0}
   flockPerception: {fileID: -5345453455142655828}
-  obstaclePerception: {fileID: 247219109010444114}
+  obstaclePerception: {fileID: 2944930329199776013}
 --- !u!114 &5760662169638324987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107,7 +107,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &247219109010444114
+--- !u!114 &2944930329199776013
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -116,7 +116,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3688345144695415349}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f696372e6d81c94cace9112b8bf19b0, type: 3}
+  m_Script: {fileID: 11500000, guid: 0874578f941e17c4285bb63529cb7a85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   tagName: 
@@ -125,7 +125,8 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 64
-  numRaycast: 10
+  numRaycast: 50
+  radius: 0.5
 --- !u!136 &793647957575107459
 CapsuleCollider:
   m_ObjectHideFlags: 0
