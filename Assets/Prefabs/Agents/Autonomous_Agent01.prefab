@@ -125,8 +125,8 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 64
-  numRaycast: 50
-  radius: 0.5
+  numRaycast: 2
+  radius: 0.42
 --- !u!136 &793647957575107459
 CapsuleCollider:
   m_ObjectHideFlags: 0
