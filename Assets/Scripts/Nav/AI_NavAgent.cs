@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,12 +7,21 @@ using UnityEngine;
 [RequireComponent(typeof(AI_NavPath))]
 public class AI_NavAgent : AI_Agent {
 	[SerializeField] private AI_NavPath path;
+    [SerializeField] AI_NavNode startNode;
+
+	private void Start() {
+		startNode ??= GetNearestAINavNode();
+        path.destination = startNode.transform.position;
+	}
 
 	void Update() {
 		if (path.HasTarget()) {
-			Debug.DrawLine(transform.position, path.destination);
 			movement.moveTowards(path.destination);
 		}
+        else {
+            AI_NavNode destinationNode = AI_NavNode.GetRandomAINavNode();
+            path.destination = destinationNode.transform.position;
+        }
 	}
 
     #region AI_NAVNODE
