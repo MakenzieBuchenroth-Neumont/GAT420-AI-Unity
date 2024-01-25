@@ -17,7 +17,7 @@ public class AI_NavNode : MonoBehaviour {
 	private void OnTriggerEnter(Collider other) {
 		if (other.gameObject.TryGetComponent<AI_NavPath>(out AI_NavPath navPath)) {
 			if (navPath.targetNode == this) {
-				navPath.targetNode = GetRandomNeighbor();
+				navPath.targetNode = navPath.GetNextAINavNode(navPath.targetNode);
 			}
 		}
 	}
@@ -25,21 +25,18 @@ public class AI_NavNode : MonoBehaviour {
 	private void OnTriggerStay(Collider other) {
 		if (other.gameObject.TryGetComponent<AI_NavPath>(out AI_NavPath navPath)) {
 			if (navPath.targetNode == this) {
-				navPath.targetNode = GetRandomNeighbor();
+				navPath.targetNode = navPath.GetNextAINavNode(navPath.targetNode);
 			}
 		}
 	}
 
-
 	#region HELPER_FUNCTIONS
 
-	public static AI_NavNode[] GetAINavNodes()
-	{
+	public static AI_NavNode[] GetAINavNodes() {
 		return FindObjectsOfType<AI_NavNode>();
 	}
 
-	public static AI_NavNode[] GetAINavNodesWithTag(string tag)
-	{
+	public static AI_NavNode[] GetAINavNodesWithTag(string tag) {
 		var allNodes = GetAINavNodes();
 
 		// add nodes with tag to nodes
@@ -55,11 +52,18 @@ public class AI_NavNode : MonoBehaviour {
 		return nodes.ToArray();
 	}
 
-	public static AI_NavNode GetRandomAINavNode()
-	{
+	public static AI_NavNode GetRandomAINavNode() {
 		var nodes = GetAINavNodes();
 		return (nodes == null) ? null : nodes[Random.Range(0, nodes.Length)];
 	}
 
-	#endregion
+    public static void ResetNodes() {
+        var nodes = GetAINavNodes();
+        foreach (var node in nodes) {
+            node.Parent = null;
+            node.Cost = float.MaxValue;
+        }
+    }
+
+    #endregion
 }
