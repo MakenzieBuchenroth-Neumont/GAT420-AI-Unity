@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class AI_State {
-    private AI_StateAgent agent;
+    protected AI_StateAgent agent;
     public AI_State(AI_StateAgent agent) {
         this.agent = agent;
     }
 
+    public string name { get { return GetType().Name; } }
+
     public abstract void OnEnter();
-    public abstract void OnExit();
     public abstract void OnUpdate();
+    public abstract void OnExit();
 }
