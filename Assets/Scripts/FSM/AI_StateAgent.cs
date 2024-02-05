@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AI_StateAgent : AI_Agent {
     public AI_Perception enemyPerception;
+    public AI_Perception allyPerception;
     public Animator animator;
     public float health = 100;
 
@@ -16,6 +17,9 @@ public class AI_StateAgent : AI_Agent {
         stateMachine.addState(nameof(AI_AttackState), new AI_AttackState(this));
         stateMachine.addState(nameof(AI_DeathState), new AI_DeathState(this));
         stateMachine.addState(nameof(AI_ChaseState), new AI_ChaseState(this));
+        stateMachine.addState(nameof(AI_WaveState), new AI_WaveState(this));
+        stateMachine.addState(nameof(AI_DanceState), new AI_DanceState(this));
+        stateMachine.addState(nameof(AI_SitUpState), new AI_SitUpState(this));
 
         stateMachine.setState(nameof(AI_IdleState));
     }
