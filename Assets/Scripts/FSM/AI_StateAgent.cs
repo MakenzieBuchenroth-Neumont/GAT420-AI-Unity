@@ -24,6 +24,8 @@ public class AI_StateAgent : AI_Agent {
 	public AI_StateAgent enemy { get; private set; }
 
     private void Start() {
+		health.value = 100;
+
         // add states to state machine
         stateMachine.addState(nameof(AI_IdleState), new AI_IdleState(this));
         stateMachine.addState(nameof(AI_PatrolState), new AI_PatrolState(this));
@@ -57,7 +59,16 @@ public class AI_StateAgent : AI_Agent {
         }
 
         animator?.SetFloat("Speed", movement.Velocity.magnitude);
-        stateMachine.Update();
+
+		// check for transition
+		foreach (var transition in stateMachine.currentState.transitions) {
+			if (transition.ToTransition()) {
+				stateMachine.setState(transition.nextState);
+				break;
+			}
+		}
+
+		stateMachine.Update();
     }
 
 	private void OnGUI() {

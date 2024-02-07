@@ -8,6 +8,8 @@ public abstract class AI_State {
         this.agent = agent;
     }
 
+    public List<AI_StateTransition> transitions { get; set; } = new List<AI_StateTransition>();
+
     public string name { get { return GetType().Name; } }
 
     public abstract void OnEnter();

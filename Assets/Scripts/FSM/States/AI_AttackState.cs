@@ -3,19 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AI_AttackState : AI_State {
-    float timer = 0;
     public AI_AttackState(AI_StateAgent agent) : base(agent) {
-    }
+		AI_StateTransition transition = new AI_StateTransition(nameof(AI_ChaseState));
+		transition.AddCondition(new FloatCondition(agent.timer, Condition.Predicate.LESS, 0));
+		transitions.Add(transition);
+	}
 
     public override void OnEnter() {
+        agent.movement.stop();
+        agent.movement.Velocity = Vector3.zero;
 		agent.animator?.SetTrigger("Attack");
-        timer = Time.time + 2;
+        agent.timer.value = 2;
 	}
 
     public override void OnUpdate() {
-        if (Time.time >= timer) {
-            agent.stateMachine.setState(nameof(AI_IdleState));
-        }
     }
 
     public override void OnExit() {
