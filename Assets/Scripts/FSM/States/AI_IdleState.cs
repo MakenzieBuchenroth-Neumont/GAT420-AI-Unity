@@ -29,7 +29,7 @@ public class AI_IdleState : AI_State {
 
         //int ran = Random.Range(1, 6);
         //if (ran == 1 || ran == 2 || ran == 3) {
-        //    
+            
         //    var allies = agent.allyPerception.getGameObjects();
         //    if (allies.Length > 0) {
         //        agent.stateMachine.setState(nameof(AI_WaveState));
